@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tejas's Spring 2025 Penn State College Dashboard</title>
+    <link rel="icon" type="images/x-icon" href="https://upload.wikimedia.org/wikipedia/en/thumb/3/3a/Penn_State_Nittany_Lions_logo.svg/640px-Penn_State_Nittany_Lions_logo.svg.png"/>
+    <link rel="stylesheet" href="HomeStyle.css"> <!-- Link to CSS -->
+</head>
+
+<body>
+    <h1>Tejas's Penn State Spring 2025 Dashboard</h1>
+    <h1 id="liveTime"></h1>
+    <h2 id="Countdown"></h2>
+
+    <script>
+        // Function to update the time and date
+        function updateTime() {
+          var currentTime = new Date();
+          var hours = currentTime.getHours();
+          var minutes = currentTime.getMinutes();
+          var seconds = currentTime.getSeconds();
+          var amPm = hours >= 12 ? 'PM' : 'AM';
+      
+          // Convert to 12-hour format
+          hours = hours % 12; 
+          hours = hours ? hours : 12; // Handle midnight (0 hours)
+      
+          // Add leading zeros to minutes and seconds
+          minutes = padZero(minutes);
+          seconds = padZero(seconds);
+      
+          // Display the time and date
+          var dateString = currentTime.toDateString();
+          var timeString = hours + ':' + minutes + ':' + seconds + ' ' + amPm;
+          document.getElementById('liveTime').innerHTML = dateString + '<br>' + timeString;
+      
+          // Schedule the next update
+          setTimeout(updateTime, 1000);
+        }
+      
+        // Function to add leading zeros to numbers
+        function padZero(num) {
+          return (num < 10 ? '0' : '') + num;
+        }
+      
+        // Initial call to update the time and date
+        updateTime();
+
+        // Countdown to the end of the semester
+        var endDate = new Date('2024-5-3');
+        function updateCountdown() {
+          var currentTime = new Date();
+          var timeDifference = endDate - currentTime;
+
+          if (timeDifference <= 0) {
+            document.getElementById('Countdown').innerHTML = 'The 2024 Spring Semester has ended! Enjoy Summer Break. Classes begin August 26';
+          }
+          
+          else {
+            var days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((timeDifference % (1000 * 60)) / 1000 + 1);
+      
+            document.getElementById('Countdown').innerHTML = 'End of 2024 Spring Semester: ' + days + 'd ' + hours + 'h ' + minutes + 'm ' + seconds + 's';
+            setTimeout(updateCountdown, 1000);
+          }
+        }
+      
+        updateCountdown();
+  </script>
+
+    <div style="text-align: center;">
+        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/3/3a/Penn_State_Nittany_Lions_logo.svg/640px-Penn_State_Nittany_Lions_logo.svg.png" alt="Penn State Logo">
+    </div>
+
+    <div class="course-container">
+        <div class="course-card">
+            <h2><a href = "SRA-211.html" target = _blank style = "color: rgb(102, 252, 241)">IST 220</a></h2>
+            <p>Professor: Earl Catagnus</p>
+            <p>Meeting Time: <br> Mon, Wed, Fri, <br> 10:10 AM - 11:00 AM</p>   
+            <p>Location: Tom. Classroom Bldg, Room 106</p>
+            <p>Assignments Due: <input type="number" value="1" id="SRA-211-assignments-due"></p>
+            <p>Next Exam: <br> <input type="date" value="2"  class='center' id="IST-220-exams-scheduled"></p>
+        </div>
+
+        <div class="course-card">
+          <h2><a href = "Cyber-100.html" target = _blank style = "color: rgb(102, 252, 241)">Cyber 100</a></h2>
+          <p>Professor: M. Bodek</p>
+          <p>Meeting Time: <br> Monday, Wednesday, Friday, <br> 4:40 PM - 5:30 PM</p>   
+          <p>Location: Main Building, Room 219</p>
+          <p>Assignments Due: <input type="number" value="3" id="Cyber-100-assignments-due"></p>
+          <p>Next Exam: <br> <input type="date" value="2" class='center' id="Cyber-100-exams-scheduled"></p>
+      </div>
+
+        <div class="course-card">
+            <h2><a href = "English-15.html" target = _blank style = "color: rgb(102, 252, 241)">English 15</a></h2>
+            <p>Professor: D. Lewis</p>
+            <p>Meeting Time: <br> Tuesday, Thursday <br> 9:05 AM - 10:20 AM</p>   
+            <p>Location: Main Building, Room 204</p>
+            <p>Assignments Due: <input type="number" value="1" id="English-15-assignments-due"></p>
+            <p>Next Exam: <br> <input type="date" value="2" class='center' id="English-15-exams-scheduled"></p>
+        </div>
+
+        <div class="course-card">
+            <h2><a href = "IST-242.html" target = _blank style = "color: rgb(102, 252, 241)">IST 242</a></h2>
+            <p>Professor: N. D'Imperio</p>
+            <p>Meeting Time: <br> Tuesday, Thursday <br> 3:05 PM - 4:20 PM</p>   
+            <p>Location: Tom. Classroom Bldg, Room 106</p>
+            <p>Assignments Due: <input type="number" value="1" id="IST-242-assignments-due"></p>
+            <p>Next Exam: <br> <input type="date" value="2" class='center'id="IST-242-exams-scheduled"></p>
+        </div>
+
+        <div class="course-card">
+            <h2><a href = "SRA-221.html" target = _blank style = "color: rgb(102, 252, 241)">SRA 221</a></h2>
+            <p>Professor: F. Sinatha</p>
+            <p>Meeting Time: <br> DOES NOT MEET <br> </p>   
+            <p>Location: WEB <br> </p>
+            <p>Assignments Due: <input type="number" value="1" id="SRA-221-assignments-due"></p>
+            <p>Next Exam: <br> <input type="date" value="2" class='center' id="SRA-221-exams-scheduled"></p>
+        </div>
+        
+        <div class="course-card">
+          <h2><a href = "Seminar.html" target = _blank style = "color: rgb(102, 252, 241)">Seminar</a></h2>
+          <p>Professor: N. D'Imperio</p>
+          <p>Meeting Time: <br> Wednesday <br> 1:25 AM - 2:15 PM</p>   
+          <p>Location: Tom. Classroom Bldg, Room 106</p>
+          <p>Assignments Due: <input type="number" value="1" id="seminar-assignments-due"></p>
+          <p>Next Exam: <br> <input type="date" value="2" class='center'id="seminar-exams-scheduled"></p>
+      </div>
+</body>
+
+<footer>&copy; Tejas's Spring 2024 Penn State College Dashboard</footer>
+
+</html>
